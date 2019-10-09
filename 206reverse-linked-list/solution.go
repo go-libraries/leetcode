@@ -1,17 +1,13 @@
 package _06reverse_linked_list
 
-/**
-* Definition for singly-linked list.
-*
- */
 type ListNode struct {
 	Val  int
 	Next *ListNode
 }
 
 func ReverseList(head *ListNode) *ListNode {
-	if head == nil {
-		return nil
+	if head == nil || head.Next == nil {
+		return head
 	}
 	var prev, cur *ListNode
 	cur = head
