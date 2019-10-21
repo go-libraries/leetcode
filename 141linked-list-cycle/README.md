@@ -27,3 +27,17 @@ https://leetcode-cn.com/problems/linked-list-cycle
 进阶：
 
 你能用 O(1)（即，常量）内存解决此问题吗？
+
+class Solution(object):
+    def hasCycle(self, head):
+        """
+        :type head: ListNode
+        :rtype: bool
+        """
+        fast = slow = head
+        while slow and fast and fast.next:
+            slow = slow.next
+            fast = fast.next
+            if slow is fast:
+                return True
+        return False
