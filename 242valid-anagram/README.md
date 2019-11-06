@@ -15,3 +15,19 @@ https://leetcode-cn.com/problems/valid-anagram
 进阶:
 如果输入字符串包含 unicode 字符怎么办？你能否调整你的解法来应对这种情况？
 
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        dic1,dic2 = {},{}
+        for item in s:
+            dic1[item] = dic1.get(item,0)+1
+        for item in t:
+            dic2[item] = dic2.get(item,0)+1
+        return dic1==dic2
+
+    def isAnagram2(self, s: str, t: str) -> bool:
+        dic1,dic2 = [0]*26, [0]*26
+        for item in s:
+            dic1[ord(item)-ord('a')] +=1
+        for item in t:
+            dic2[ord(item)-ord('a')] +=1
+        return dic1==dic2
