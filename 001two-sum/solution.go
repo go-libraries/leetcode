@@ -25,6 +25,7 @@ func TwoSum2(nums []int, target int) []int {
 	}
 	return []int{}
 }
+
 func TwoSum3(nums []int, target int) []int {
 	maps := make(map[int]int)
 	for i := 0; i < len(nums); i++ {
@@ -35,4 +36,31 @@ func TwoSum3(nums []int, target int) []int {
 		maps[nums[i]] = i
 	}
 	return []int{}
+}
+
+//最粗暴的方式 时间复杂度 O(logN)
+func TwoSum5(nums []int, target int) []int {
+
+	l := len(nums)
+	for i := 0; i < l-1; i++ {
+		for j := i + 1; j < l; j++ {
+			if nums[i]+nums[j] == target {
+				return []int{i, j}
+			}
+		}
+	}
+
+	return nil
+}
+
+//额外空间 复杂度 O(n) 时间复杂度 O(n)
+func TwoSum4(nums []int, target int) []int {
+	m := map[int]int{}
+	for i, v := range nums {
+		if k, ok := m[target-v]; ok {
+			return []int{k, i}
+		}
+		m[v] = i
+	}
+	return nil
 }
